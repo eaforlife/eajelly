@@ -62,5 +62,5 @@
 
  ## Server Link
  - [EA Jelly Home](http://eajelly.xyz)
- - [EA Jelly Registration](http://join.eajelly.xyz)
+ - [EA Jelly Registration](https://discord.gg/nwud34Sghr)
  - [EA Jelly repository](https://github.com/eaforlife)
