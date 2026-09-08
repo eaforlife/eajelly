@@ -34,7 +34,7 @@
 
  ## Server datasheet
 | Item  | Detail | Value |
-| ------------- | ------------- | ------------- |
+| :---: | ------------- | :---: |
 | 1  | TV Show, Movies and Music Video 4K resolution  | `2720:auto` |
 | 2  | TV Show, Movies and Music Video 1080p resolution  | `1760:auto`  |
 | 3  | TV Show, Movies and Music Video 720p resolution  | `1320:auto`  |
@@ -43,7 +43,7 @@
 | 6  | TV Show, Movies and Music Video 1080p bitrate  | `VBR Max Rate: 5000K`  |
 | 7  | TV Show, Movies and Music Video 720p bitrate  | `VBR Max Rate: 2500K`  |
 | 8  | TV Show, Movies and Music Video cellular bitrate  | `VBR Max Rate: 2500K`  |
-| 9  | TV Show, Movies and Music Video audio bitrate  | `Stereo: 96K or 128k downmix`  |
+| 9  | TV Show, Movies and Music Video audio bitrate  | `Stereo: 96K or 128k downmix from surround`  |
 | 10  | TV Show, Movies and Music Video audio codec  | `OPUS`  |
 | 11  | TV Show, Movies and Music Video video codec | `H.265 or H.265 Main10; AV1 for some 720p or Cellular`  |
 | 12  | TV Show, Movies and Music Video video extension | `MP4`  |
@@ -51,13 +51,13 @@
 | 14  | TV Show, Movies and Music Video subtitle codec | `MP4 compatible mov_text`  |
 | 15  | Music Bitrate | `256K`  |
 | 16  | Music Codec | `AAC`  |
-| 17  | Music Audio | `Stereo or Stereo downmixed from ATMOS`  |
+| 17  | Music Audio | `Stereo or Stereo downmixed from DOLBY ATMOS`  |
 | 18  | Music Lyrics | `embedded timed lyrics or lyric`  |
-| 19  | TV Shows, Movies and Music Video 4K Data Rate | `11 mbps`  |
-| 20  | TV Shows, Movies and Music Video 1080p Data Rate | `3 mbps`  |
-| 21  | TV Shows, Movies and Music Video 720p Data Rate | `2 mbps`  |
-| 22  | TV Shows, Movies and Music Video cellular Data Rate | `1 mbps`  |
-| 23  | Music Data Rate | `300 kbps`  |
+| 19  | TV Shows, Movies and Music Video 4K Data Rate | `11 mbps or 2 hour video 4 GB`  |
+| 20  | TV Shows, Movies and Music Video 1080p Data Rate | `3 mbps or 2 hour video 1.8 GB`  |
+| 21  | TV Shows, Movies and Music Video 720p Data Rate | `2 mbps or 1.5 hour video 1.6 GB`  |
+| 22  | TV Shows, Movies and Music Video cellular Data Rate | `1 mbps or 1.5 hour video 1.4 GB`  |
+| 23  | Music Data Rate | `300 kbps or 5 minute music 7 MB`  |
 
 
  ## Server Link
