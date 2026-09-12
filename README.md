@@ -5,7 +5,7 @@
 <a name="available-apps"></a>
  ## Apps for EA Jelly
 
- EA Jelly can be accessed on http://eajelly.xyz on any browsers that supports HTML5 and Javascript. Watching or listening through the website can generally work but Jellyfin has community driven third party app to make viewing experience better. For example, some browser don't support playback content by default, or if your hardware does support it, the browser can sometimes fall back to using CPU to play content. The apps below are proven to be simple set and forget. Note that official Jellyfin app exists on iOS and Android. They can work but the app recommended below supports more feature.
+ EA Jelly can be accessed through the address http://eajelly.xyz on any browsers that supports HTML5 and Javascript. Watching or listening through the website can generally work but Jellyfin has community driven third party app to make viewing experience better. For example, some browser don't support playback content by default, or even if your hardware does support it, the browser can sometimes fall back to using CPU to play content that can consume more power and heat. The apps below are proven to be simple set and forget. Note that official Jellyfin app exists on iOS and Android. They can work but the app recommended below supports more feature.
 > [!TIP]
 > These apps have server configuration baked in. To be able to change server use the following switch `--server-override` before running the app.
  - For Windows or MacOS or Debian based system the app contains features that works well with EA Jelly server. You just need an account to access.
