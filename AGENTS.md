@@ -418,3 +418,62 @@ Not independently verified:
 - Direct connectivity and fallback behavior from clients in every listed country.
 - Successful direct delivery for every type of artwork request.
 - Any GeoIP routing changes to general metadata/API requests; none are documented as implemented.
+
+## Jellyfin Health Monitor — VPS
+
+### Purpose
+Maintain near-real-time Jellyfin availability monitoring through the VPS, display custom outage pages at `https://eajelly.xyz/`, and update two existing Discord status messages when the confirmed status changes.
+
+### Health-check schedule
+- Systemd timer: `jellyfin-health-check.timer`
+- Service: `jellyfin-health-check.service`
+- Interval: **15 seconds**, aligned to `:00`, `:15`, `:30`, and `:45`
+- Boot delay: 1 minute
+- Timer accuracy: 1 second
+- Require two consecutive failures of the same type before confirming an outage.
+- Continue checking during an outage, but do not repeatedly reload Nginx or send Discord updates while the confirmed status remains unchanged.
+
+### Health-check classification
+- **UP:** TCP connection succeeds and `https://media.eajelly.xyz:9000/health` returns HTTP 200.
+- **CONNECTIVITY_ISSUE:** TCP connection to `192.168.250.254:9000` fails. Nginx returns 503 and displays `jellyfin-connectivity.html`.
+- **JELLYFIN_DOWN:** TCP succeeds, but the HTTP health check does not return 200. Nginx returns 504 and displays `jellyfin-down.html`.
+- On recovery, restore normal proxying, record the recovery timestamp and outage duration, and update Discord.
+
+### Nginx outage pages
+- Main site: `https://eajelly.xyz/`
+- Connectivity page: `/var/www/html/jellyfin-connectivity.html`
+- Jellyfin-down page: `/var/www/html/jellyfin-down.html`
+- Health-state include: `/etc/nginx/snippets/jellyfin-health-state.conf`
+- Site configuration: `/etc/nginx/sites-available/eajelly.xyz`
+- Keep health-monitor rules scoped to the `eajelly.xyz` HTTPS virtual host.
+- Both outage pages automatically retry the main site every 15 seconds and provide a **Retry now** button.
+- Preserve existing artwork caching, direct-media routing, and proxy rules.
+- Validate Nginx configuration with `nginx -t` before reloading.
+- Only change the health-state include on confirmed status transitions.
+
+### Discord status updates
+- Sender: `/usr/local/sbin/jellyfin-discord-update`
+- Private webhook configuration: `/etc/jellyfin-health/discord.env`
+- Existing message IDs: `/var/lib/jellyfin-health/discord-messages.json`
+- Notification tracking: `/var/lib/jellyfin-health/last-notified-status`
+- Preserve the EA Jelly status-message template, links, and existing messages.
+- Edit the two existing messages rather than posting new messages during normal updates.
+- Notify only on confirmed status transitions. If a notification fails, retry on a later health check.
+- Do not expose webhook URLs, tokens, or message IDs in logs or documentation.
+- Reason and recovery text must use real newline characters, not literal `\n` text.
+- Recovery messages include the recovery timestamp and calculated downtime duration.
+
+### Configuration, state, and logs
+- Health-check configuration: `/etc/jellyfin-health/config`
+- Persistent state: `/var/lib/jellyfin-health/state`
+- Health log: `/var/log/jellyfin-health.log`
+- Health script: `/usr/local/sbin/jellyfin-health-check`
+- Systemd timer: `/etc/systemd/system/jellyfin-health-check.timer`
+- Systemd service: `/etc/systemd/system/jellyfin-health-check.service`
+
+### Operational safeguards
+- Do not deliberately disconnect WireGuard or stop Jellyfin without accounting for other users and services relying on the tunnel.
+- Avoid repeated outage simulations when the monitor, Nginx, and Discord behavior can be verified through logs and configuration checks.
+- After a test, confirm that health state returns to `UP`, normal proxying is restored, and both Discord messages reflect recovery.
+- Keep sensitive configuration files root-owned and restricted.
+
