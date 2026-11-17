@@ -35,16 +35,16 @@
  ## Server datasheet
 | Item  | Detail | Value |
 | :---: | ------------- | :---: |
-| 1  | TV Show, Movies and Music Video 4K resolution  | `2720:auto` |
-| 2  | TV Show, Movies and Music Video 1080p resolution  | `1760:auto`  |
-| 3  | TV Show, Movies and Music Video 720p resolution  | `1320:auto`  |
+| 1  | TV Show, Movies and Music Video 4K resolution  | `2960:auto` |
+| 2  | TV Show, Movies and Music Video 1080p resolution  | `1890:auto`  |
+| 3  | TV Show, Movies and Music Video 720p resolution  | `1280:auto`  |
 | 4  | TV Show, Movies and Music Video cellular resolution  | `540:auto`  |
 | 5  | TV Show, Movies and Music Video 4K bitrate  | `VBR Max Rate: 8000K` |
 | 6  | TV Show, Movies and Music Video 1080p bitrate  | `VBR Max Rate: 5000K`  |
 | 7  | TV Show, Movies and Music Video 720p bitrate  | `VBR Max Rate: 2500K`  |
 | 8  | TV Show, Movies and Music Video cellular bitrate  | `VBR Max Rate: 2500K`  |
-| 9  | TV Show, Movies and Music Video audio bitrate  | `Stereo: 96K or 128k downmix from surround`  |
-| 10  | TV Show, Movies and Music Video audio codec  | `OPUS`  |
+| 9  | TV Show, Movies and Music Video audio bitrate  | `Stereo: 96K or 128k downmix from surround or AAC 540kbit for 5.1 or 620kbit for 7.1 surround.`  |
+| 10  | TV Show, Movies and Music Video audio codec  | `OPUS or AAC for compatible surround`  |
 | 11  | TV Show, Movies and Music Video video codec | `H.265 or H.265 Main10; AV1 for some 720p or Cellular`  |
 | 12  | TV Show, Movies and Music Video video extension | `MP4`  |
 | 13  | TV Show, Movies and Music Video subtitle format | `UTF-8`  |
